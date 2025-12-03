@@ -90,5 +90,6 @@ workflow QIIME2_DIVERSITY {
     beta     = !skip_diversity_indices ? QIIME2_DIVERSITY_BETA.out.beta : []
     betaord  = !skip_diversity_indices ? QIIME2_DIVERSITY_BETAORD.out.beta : []
     adonis   = !skip_diversity_indices && params.qiime_adonis_formula ? QIIME2_DIVERSITY_ADONIS.out.html : []
+    distance = QIIME2_DIVERSITY_CORE.out.distance
     versions = ch_versions_qiime2_diversity
 }
