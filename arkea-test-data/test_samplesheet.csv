@@ -1,6 +1,6 @@
 sampleID,forwardReads,reverseReads
-D1_096M,arkea-test-data/fastqs/fastqs/D1_096M_R1_001.fastq.gz,arkea-test-data/fastqs/fastqs/D1_096M_R2_001.fastq.gz
-D1_439M,arkea-test-data/fastqs/fastqs/D1_439M_R1_001.fastq.gz,arkea-test-data/fastqs/fastqs/D1_439M_R2_001.fastq.gz
-D1_444M,arkea-test-data/fastqs/fastqs/D1_444M_R1_001.fastq.gz,arkea-test-data/fastqs/fastqs/D1_444M_R2_001.fastq.gz
-D1_111M,arkea-test-data/fastqs/fastqs/D1_111M_R1_001.fastq.gz,arkea-test-data/fastqs/fastqs/D1_111M_R2_001.fastq.gz
+D1_096M,arkea-test-data/fastqs/D1_096M_R1_001.fastq.gz,arkea-test-data/fastqs/D1_096M_R2_001.fastq.gz
+D1_439M,arkea-test-data/fastqs/D1_439M_R1_001.fastq.gz,arkea-test-data/fastqs/D1_439M_R2_001.fastq.gz
+D1_444M,arkea-test-data/fastqs/D1_444M_R1_001.fastq.gz,arkea-test-data/fastqs/D1_444M_R2_001.fastq.gz
+D1_111M,arkea-test-data/fastqs/D1_111M_R1_001.fastq.gz,arkea-test-data/fastqs/D1_111M_R2_001.fastq.gz
 
