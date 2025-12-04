@@ -1,0 +1,10 @@
+{
+    "FW_primer": "GGAATTGGCGGGGGAGCAC",
+    "RV_primer": "GCGGTGTGTGCAAGGAGC",
+    "outdir": "./results",
+    "filter_ssu": "bac,arc",
+    "min_len_asv": 250,
+    "dada_ref_tax_custom": "/data/ampliseq/ref/rimdb+silva_no_arch.fa",
+    "dada_ref_tax_custom_sp": "/data/ampliseq/ref/RIM_DB_14_07_dna_rename_Ampliseqv2.11.fa",
+    "qiime_ref_tax_custom": "/data/ampliseq/ref/RIM_DB_14_07_dna_rename.fna,/data/ampliseq/ref/RIM_DB_14_07_c.tax"
+}
