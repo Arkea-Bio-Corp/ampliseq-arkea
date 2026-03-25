@@ -85,7 +85,7 @@ process DADA2_ERR {
 
         sink(file = "${prefix}.err.log")
 
-        if $(binned){
+        if ($binned){
             binnedQs <- c(2,11,25,37)
             binnedQualErrfun <- makeBinnedQualErrfun(binnedQs)
             errF <- learnErrors(fnFs, errorEstimationFunction = binnedQualErrfun, multithread = $task.cpus, verbose = TRUE)
