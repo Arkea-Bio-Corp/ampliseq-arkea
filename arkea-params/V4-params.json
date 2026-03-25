@@ -1,0 +1,10 @@
+{
+    "FW_primer": "GTGYCAGCMGCCGCGGTAA",
+    "RV_primer": "GGACTACNVGGGTWTCTAAT",
+    "outdir": "./results",
+    "filter_ssu": "bac,arc",
+    "min_len_asv": 250,
+    "dada_ref_tax_custom": "/data/ampliseq/ref/rimdb+silva_no_arch.fa",
+    "dada_ref_tax_custom_sp": "/data/ampliseq/ref/rimdb+silva_no_arch_species_headers.fasta",
+    "qiime_ref_tax_custom": "/data/ampliseq/ref/rimdb+silva_no_arch_qiime_header.fna,/data/ampliseq/ref/rimdb+silva_no_arch.tax"
+}

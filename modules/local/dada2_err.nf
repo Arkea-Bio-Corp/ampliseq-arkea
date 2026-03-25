@@ -24,6 +24,7 @@ process DADA2_ERR {
     def prefix = task.ext.prefix ?: "prefix"
     def args = task.ext.args ?: ''
     def seed = task.ext.seed ?: '100'
+    def binned = params.binned_quality
     if (!meta.single_end) {
         """
         #!/usr/bin/env Rscript
@@ -33,10 +34,19 @@ process DADA2_ERR {
         fnFs <- sort(list.files(".", pattern = "_1.filt.fastq.gz", full.names = TRUE), method = "radix")
         fnRs <- sort(list.files(".", pattern = "_2.filt.fastq.gz", full.names = TRUE), method = "radix")
 
-        sink(file = "${prefix}.err.log")
-        errF <- learnErrors(fnFs, $args, multithread = $task.cpus, verbose = TRUE)
+        if ($binned){
+            # Binned quality score error model
+            binnedQs <- c(2, 11, 25, 37)
+            binnedQualErrfun <- makeBinnedQualErrfun(binnedQs)
+            errF <- learnErrors(fnFs, $args, errorEstimationFunction = binnedQualErrfun, multithread = $task.cpus, verbose = TRUE)
+            errR <- learnErrors(fnRs, $args, errorEstimationFunction = binnedQualErrfun, multithread = $task.cpus, verbose = TRUE)
+        } else {
+            # Standard DADA2 error model
+            errF <- learnErrors(fnFs, $args, multithread = $task.cpus, verbose = TRUE)
+            errR <- learnErrors(fnRs, $args, multithread = $task.cpus, verbose = TRUE)
+        }
+
         saveRDS(errF, "${prefix}_1.err.rds")
-        errR <- learnErrors(fnRs, $args, multithread = $task.cpus, verbose = TRUE)
         saveRDS(errR, "${prefix}_2.err.rds")
         sink(file = NULL)
 
@@ -74,7 +84,14 @@ process DADA2_ERR {
         fnFs <- sort(list.files(".", pattern = ".filt.fastq.gz", full.names = TRUE))
 
         sink(file = "${prefix}.err.log")
-        errF <- learnErrors(fnFs, $args, multithread = $task.cpus, verbose = TRUE)
+
+        if $(binned){
+            binnedQs <- c(2,11,25,37)
+            binnedQualErrfun <- makeBinnedQualErrfun(binnedQs)
+            errF <- learnErrors(fnFs, errorEstimationFunction = binnedQualErrfun, multithread = $task.cpus, verbose = TRUE)
+        } else {
+            errF <- learnErrors(fnFs, $args, multithread = $task.cpus, verbose = TRUE)
+        }
         saveRDS(errF, "${prefix}.err.rds")
         sink(file = NULL)
 
