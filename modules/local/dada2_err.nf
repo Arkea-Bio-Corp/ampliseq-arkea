@@ -34,7 +34,7 @@ process DADA2_ERR {
         fnFs <- sort(list.files(".", pattern = "_1.filt.fastq.gz", full.names = TRUE), method = "radix")
         fnRs <- sort(list.files(".", pattern = "_2.filt.fastq.gz", full.names = TRUE), method = "radix")
 
-        if ($binned){
+        if (${binned}){
             # Binned quality score error model
             binnedQs <- c(2, 11, 25, 37)
             binnedQualErrfun <- makeBinnedQualErrfun(binnedQs)
@@ -85,7 +85,7 @@ process DADA2_ERR {
 
         sink(file = "${prefix}.err.log")
 
-        if ($binned){
+        if (${binned}){
             binnedQs <- c(2,11,25,37)
             binnedQualErrfun <- makeBinnedQualErrfun(binnedQs)
             errF <- learnErrors(fnFs, errorEstimationFunction = binnedQualErrfun, multithread = $task.cpus, verbose = TRUE)
