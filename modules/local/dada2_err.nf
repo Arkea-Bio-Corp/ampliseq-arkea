@@ -38,8 +38,8 @@ process DADA2_ERR {
             # Binned quality score error model
             binnedQs <- c(2, 11, 25, 37)
             binnedQualErrfun <- makeBinnedQualErrfun(binnedQs)
-            errF <- learnErrors(fnFs, errorEstimationFunction = binnedQualErrfun, multithread = $task.cpus, verbose = TRUE)
-            errR <- learnErrors(fnRs, errorEstimationFunction = binnedQualErrfun, multithread = $task.cpus, verbose = TRUE)
+            errF <- learnErrors(fnFs, $args, errorEstimationFunction = binnedQualErrfun, multithread = $task.cpus, verbose = TRUE)
+            errR <- learnErrors(fnRs, $args, errorEstimationFunction = binnedQualErrfun, multithread = $task.cpus, verbose = TRUE)
         } else {
             # Standard DADA2 error model
             errF <- learnErrors(fnFs, $args, multithread = $task.cpus, verbose = TRUE)
